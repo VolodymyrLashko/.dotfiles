@@ -3,11 +3,11 @@ general:
   focus_follows_cursor: false
 
   # Whether to jump the cursor between windows focused by the WM.
-  cursor_follows_focus: false
+  cursor_follows_focus: true 
 
   # Whether to switch back and forth between the previously focused workspace
   # when focusing the current workspace.
-  toggle_workspace_on_refocus: true
+  toggle_workspace_on_refocus: false
 
   # Whether to show floating windows as always on top.
   show_floating_on_top: false
@@ -21,21 +21,21 @@ general:
   # *Strongly* recommended to set to 'false'. Whether to globally enable/disable
   # window transition animations (on minimize, close, etc). Set to 'unchanged'
   # to make no setting changes.
-  window_animations: "unchanged"
+  window_animations: false
 
 gaps:
   # Gap between adjacent windows.
-  inner_gap: "20px"
+  inner_gap: "0"
 
   # Gap between windows and the screen edge.
-  outer_gap: "20px"
+  outer_gap: "0"
 
 # Highlight active/inactive windows with a colored border.
 # ** Exclusive to Windows 11 due to API limitations.
 focus_borders:
   active:
     enabled: true
-    color: "#0000ff"
+    color: "#00ff00"
 
   inactive:
     enabled: false
@@ -45,10 +45,10 @@ bar:
   height: "30px"
   position: "top"
   opacity: 1.0
-  background: "#20242cc4"
-  foreground: "#ffffff"
-  font_family: "Segoe UI"
-  font_size: "13px"
+  background: "#000000ff"
+  foreground: "#00ff00"
+  font_family: "JetBrains Mono"
+  font_size: "14px"
   padding: "4px 6px"
   offset_x: "0"
   offset_y: "0"
@@ -61,21 +61,25 @@ bar:
   components_center:
     - type: "window title"
   components_right:
+    - type: "music"
+      label_not_playing: ""
+      label_paused: "{song_title} - {artist_name}"
+      label_playing: "{song_title} - {artist_name} ▶"
+      max_title_length: 20
+      max_artist_length: 20
+      padding: "0 10px"
     - type: "system tray"
-    - type: "tiling direction"
-      label_horizontal: "⮂"
-      label_vertical: "⮁"
-      background: "#ffffff33"
-      margin: "0 4px"
-      padding: "0 8px"
-    - type: "binding mode"
-      background: "#ffffff33"
-      margin: "0 4px 0 0"
-      padding: "0 8px"
+      padding: "2 10px"
+    - type: "battery"
+      label_draining: "[{battery_level}% remaining]"
+      label_power_saver: "[{battery_level}% (power saver)]"
+      label_charging: "[{battery_level}% (charging)]"
+      padding: "0 10px"
     - type: "clock"
       # Documentation on formatting date/time string:
       # https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings
       time_formatting: "hh:mm tt  ddd MMM d"
+      padding: "0 10px"
 
 workspaces:
   - name: "1"
@@ -87,6 +91,8 @@ workspaces:
   - name: "7"
   - name: "8"
   - name: "9"
+  - name: "0"
+  - name: "11"
 
 window_rules:
   # Task Manager requires admin privileges to manage and should be ignored unless running
@@ -127,23 +133,23 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - command: "focus left"
-    bindings: ["Alt+H", "Alt+Left"]
+    bindings: ["Alt+Shift+H", "Alt+Left"]
   - command: "focus right"
-    bindings: ["Alt+L", "Alt+Right"]
+    bindings: ["Alt+Shift+L", "Alt+Right"]
   - command: "focus up"
-    bindings: ["Alt+K", "Alt+Up"]
+    bindings: ["Alt+Shift+K", "Alt+Up"]
   - command: "focus down"
-    bindings: ["Alt+J", "Alt+Down"]
+    bindings: ["Alt+Shift+J", "Alt+Down"]
 
   # Move focused window in a given direction.
   - command: "move left"
-    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+    bindings: ["Alt+Ctrl+H", "Alt+Shift+Left"]
   - command: "move right"
-    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+    bindings: ["Alt+Ctrl+L", "Alt+Shift+Right"]
   - command: "move up"
-    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+    bindings: ["Alt+Ctrl+K", "Alt+Shift+Up"]
   - command: "move down"
-    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+    bindings: ["Alt+Ctrl+J", "Alt+Shift+Down"]
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"
@@ -226,6 +232,10 @@ keybindings:
     binding: "Alt+8"
   - command: "focus workspace 9"
     binding: "Alt+9"
+  - command: "focus workspace 0"
+    binding: "Alt+0"
+  - command: "focus workspace 11"
+    binding: "Alt+N"
 
   # Move focused workspace to a monitor in a given direction.
   - command: "move workspace left"
@@ -256,3 +266,7 @@ keybindings:
     binding: "Alt+Shift+8"
   - commands: ["move to workspace 9", "focus workspace 9"]
     bindings: ["Alt+Shift+9"]
+  - commands: ["move to workspace 0", "focus workspace 0"]
+    binding: "Alt+Shift+0"
+  - commands: ["move to workspace 11", "focus workspace 11"]
+    bindings: ["Alt+Shift+N"]
