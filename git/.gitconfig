@@ -1,0 +1,17 @@
+[user]
+	name = VECTOR-SOFTWARE\\vlashko
+	email = vlashko@vector-software.com
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[credential "helperselector"]
+	selected = store
+[credential "https://tfs.vissim.no"]
+	provider = generic
+[credential "http://nohostfs001.vissim.no:8080"]
+	provider = generic
+[core]
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+	autocrlf = true
