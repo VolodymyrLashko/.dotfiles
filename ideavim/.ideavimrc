@@ -214,11 +214,11 @@ map gcc :action CommentByLineComment<CR>
 
 " map <A-j> <C-n>
 " map <A-k> <C-p>
-nnoremap <C-j> 5j
-nnoremap <C-k> 5k
+nnoremap <C-j> 10j
+nnoremap <C-k> 10k
 
-vnoremap <C-j> 5j
-vnoremap <C-k> 5k
+vnoremap <C-j> 10j
+vnoremap <C-k> 10k
 
 nnoremap x "_x
 nnoremap <leader>c "*d
